@@ -243,7 +243,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     private void cmdOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOperacionesActionPerformed
-        int op,nf,nc,aux;
+         int op,nf,nc,aux;
        
        op=cmbOperacion.getSelectedIndex();
        
@@ -263,21 +263,6 @@ public class Principal extends javax.swing.JFrame {
                    
                }
             break;
-           case 1:
-               for (int i = 0; i < nf; i++) {
-                   for (int j = 0; j < nc; j++) {
-                       aux=(int) tblTablaInicial.getValueAt(i, j);
-                       if(i<=j){
-                       tblTablaResultado.setValueAt(aux, i, j);
-                       }
-                   }
-                   
-               }
-            break;
-           
-           
-           
-           
        }
     }//GEN-LAST:event_cmdOperacionesActionPerformed
 
