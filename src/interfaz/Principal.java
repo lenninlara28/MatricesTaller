@@ -5,6 +5,9 @@
  */
 package interfaz;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hp 14
@@ -44,8 +47,6 @@ public class Principal extends javax.swing.JFrame {
         tblTablaInicial = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTablaResultado = new javax.swing.JTable();
-        jPanel4 = new javax.swing.JPanel();
-        txtResultado = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,18 +79,33 @@ public class Principal extends javax.swing.JFrame {
         cmdCrear.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         cmdCrear.setForeground(new java.awt.Color(255, 255, 255));
         cmdCrear.setText("Crear");
+        cmdCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCrearActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         cmdManual.setBackground(new java.awt.Color(0, 0, 0));
         cmdManual.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         cmdManual.setForeground(new java.awt.Color(255, 255, 255));
         cmdManual.setText("Manual");
+        cmdManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdManualActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
 
         cmdAutomatico.setBackground(new java.awt.Color(0, 0, 0));
         cmdAutomatico.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         cmdAutomatico.setForeground(new java.awt.Color(255, 255, 255));
         cmdAutomatico.setText("Automatico");
+        cmdAutomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdAutomaticoActionPerformed(evt);
+            }
+        });
         jPanel3.add(cmdAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
 
         cmdOperaciones.setBackground(new java.awt.Color(0, 0, 0));
@@ -130,14 +146,6 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 340, 260));
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtResultado.setEditable(false);
-        jPanel4.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 440, 30));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 600, 100));
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diagonal Secundaria", "Triangular Superior", "Triangular Inferior", "Traspuesta", "Letra A", "Letra Z", "Letra T", "Letra V", "Letra E", "Letra F", "Letra P", "Letra I", "Letra N", "Letra Y", "Letra X" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, -1, -1));
 
@@ -151,13 +159,61 @@ public class Principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
+       int nf,nc;
+       DefaultTableModel tm,tm2;
+       
+       nf = Integer.parseInt(txtNumeroDeFilas.getText());
+       nc = Integer.parseInt(txtNumeroDeColumnas.getText());
+       
+       tm = (DefaultTableModel)tblTablaInicial.getModel();
+       tm2 = (DefaultTableModel)tblTablaResultado.getModel();
+       
+       tm.setRowCount(nf);
+       tm.setColumnCount(nc);
+       
+       tm2.setRowCount(nf);
+       tm2.setColumnCount(nc);
+      
+    }//GEN-LAST:event_cmdCrearActionPerformed
+
+    private void cmdManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdManualActionPerformed
+       int nc,nf,n;
+       
+       nc=tblTablaInicial.getColumnCount();
+       nf=tblTablaInicial.getRowCount();
+       
+        for (int i = 0; i < nf; i++) {
+            for (int j = 0; j < nc; j++) {
+                n= Integer.parseInt(JOptionPane.showInputDialog(this,"Digite El Numero En La Fila "+i+" En La Columna " + j));
+                tblTablaInicial.setValueAt(n, i, j);
+            }
+            
+        }
+       
+       
+    }//GEN-LAST:event_cmdManualActionPerformed
+
+    private void cmdAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdAutomaticoActionPerformed
+        int nc,nf,n;
+       
+       nc=tblTablaInicial.getColumnCount();
+       nf=tblTablaInicial.getRowCount();
+       
+        for (int i = 0; i < nf; i++) {
+            for (int j = 0; j < nc; j++) {
+                n= (int) (Math.random()*50 +1);
+                tblTablaInicial.setValueAt(n, i, j);
+            }
+            
+        }
+    }//GEN-LAST:event_cmdAutomaticoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -207,13 +263,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblTablaInicial;
     private javax.swing.JTable tblTablaResultado;
     private javax.swing.JTextField txtNumeroDeColumnas;
     private javax.swing.JTextField txtNumeroDeFilas;
-    private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
 }
