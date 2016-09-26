@@ -261,8 +261,39 @@ public class Principal extends javax.swing.JFrame {
                        }
                    }
                    
-               }
-            break;
+               }break;
+            case 1:
+               for (int i = 0; i < nf; i++) {
+                   for (int j = 0; j < nc; j++) {
+                       aux=(int) tblTablaInicial.getValueAt(i, j);
+                       if(i<=j){
+                       tblTablaResultado.setValueAt(aux, i, j);
+                       }
+                   }
+               }break;
+            case 2:
+                for (int i = 0; i < nf; i++) {
+                   for (int j = 0; j < nc; j++) {
+                       aux=(int) tblTablaInicial.getValueAt(i, j);
+                       if(i>=j){
+                       tblTablaResultado.setValueAt(aux, i, j);
+                       }
+                   }
+               }break;
+            case 3 :
+                for (int i = 0; i < nf; i++) {
+                   for (int j = 0; j < nc; j++) {
+                       aux=(int) tblTablaInicial.getValueAt(i, j);
+                       
+                       tblTablaResultado.setValueAt(aux, j, i);
+                       
+                   }
+               }break;
+           
+           
+           
+           
+       
        }
     }//GEN-LAST:event_cmdOperacionesActionPerformed
 
