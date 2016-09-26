@@ -27,17 +27,133 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNumeroDeFilas = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtNumeroDeColumnas = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        cmdCrear = new javax.swing.JButton();
+        cmdManual = new javax.swing.JButton();
+        cmdAutomatico = new javax.swing.JButton();
+        cmdOperaciones = new javax.swing.JButton();
+        cmdLimpiar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblTablaInicial = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTablaResultado = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        txtResultado = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        jLabel1.setText("Operaciones Con Matrices");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Iniciales", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel2.setText("N° Filas :");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel2.add(txtNumeroDeFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 30, -1));
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        jLabel3.setText("N°Columnas :");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+        jPanel2.add(txtNumeroDeColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 30, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 330, 70));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Acciones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 12))); // NOI18N
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmdCrear.setBackground(new java.awt.Color(0, 0, 0));
+        cmdCrear.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmdCrear.setForeground(new java.awt.Color(255, 255, 255));
+        cmdCrear.setText("Crear");
+        jPanel3.add(cmdCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        cmdManual.setBackground(new java.awt.Color(0, 0, 0));
+        cmdManual.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmdManual.setForeground(new java.awt.Color(255, 255, 255));
+        cmdManual.setText("Manual");
+        jPanel3.add(cmdManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, -1, -1));
+
+        cmdAutomatico.setBackground(new java.awt.Color(0, 0, 0));
+        cmdAutomatico.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmdAutomatico.setForeground(new java.awt.Color(255, 255, 255));
+        cmdAutomatico.setText("Automatico");
+        jPanel3.add(cmdAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
+
+        cmdOperaciones.setBackground(new java.awt.Color(0, 0, 0));
+        cmdOperaciones.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmdOperaciones.setForeground(new java.awt.Color(255, 255, 255));
+        cmdOperaciones.setText("Operacion");
+        jPanel3.add(cmdOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, -1, -1));
+
+        cmdLimpiar.setBackground(new java.awt.Color(0, 0, 0));
+        cmdLimpiar.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        cmdLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        cmdLimpiar.setText("Limpiar");
+        jPanel3.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 50, 470, 70));
+
+        tblTablaInicial.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(tblTablaInicial);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 340, 260));
+
+        tblTablaResultado.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tblTablaResultado);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, 340, 260));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado"));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtResultado.setEditable(false);
+        jPanel4.add(txtResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 440, 30));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 600, 100));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diagonal Secundaria", "Triangular Superior", "Triangular Inferior", "Traspuesta", "Letra A", "Letra Z", "Letra T", "Letra V", "Letra E", "Letra F", "Letra P", "Letra I", "Letra N", "Letra Y", "Letra X" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 944, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -79,5 +195,25 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdAutomatico;
+    private javax.swing.JButton cmdCrear;
+    private javax.swing.JButton cmdLimpiar;
+    private javax.swing.JButton cmdManual;
+    private javax.swing.JButton cmdOperaciones;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblTablaInicial;
+    private javax.swing.JTable tblTablaResultado;
+    private javax.swing.JTextField txtNumeroDeColumnas;
+    private javax.swing.JTextField txtNumeroDeFilas;
+    private javax.swing.JTextField txtResultado;
     // End of variables declaration//GEN-END:variables
 }
