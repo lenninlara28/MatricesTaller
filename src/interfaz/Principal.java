@@ -280,7 +280,7 @@ public class Principal extends javax.swing.JFrame {
 
         tm2.setRowCount(0);
         tm2.setColumnCount(0);
-        
+
         Helper.porDefectoTabla(tblTablaInicial);
         Helper.porDefectoTabla(tblTablaResultado);
 
