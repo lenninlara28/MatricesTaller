@@ -293,56 +293,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdLimpiarActionPerformed
 
     private void cmdOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOperacionesActionPerformed
-        int op, nf, nc, aux;
-
-        op = cmbOperacion.getSelectedIndex();
-
-        nc = tblTablaInicial.getColumnCount();
-        nf = tblTablaInicial.getRowCount();
+        int op = cmbOperacion.getSelectedIndex();
+        
         Helper.limpiadoTabla(tblTablaResultado);
 
         switch (op) {
 
             case 0:
-                for (int i = 0; i < nf; i++) {
-                    for (int j = 0; j < nc; j++) {
-                        aux = (int) tblTablaInicial.getValueAt(i, j);
-                        if (nf - 1 - i == j) {
-                            tblTablaResultado.setValueAt(aux, i, j);
-                        }
-                    }
-
-                }
+                Helper.diagonalSecundaria(tblTablaInicial, tblTablaResultado);
                 break;
             case 1:
-                for (int i = 0; i < nf; i++) {
-                    for (int j = 0; j < nc; j++) {
-                        aux = (int) tblTablaInicial.getValueAt(i, j);
-                        if (i <= j) {
-                            tblTablaResultado.setValueAt(aux, i, j);
-                        }
-                    }
-                }
+                Helper.triangularSuperior(tblTablaInicial, tblTablaResultado);
                 break;
             case 2:
-                for (int i = 0; i < nf; i++) {
-                    for (int j = 0; j < nc; j++) {
-                        aux = (int) tblTablaInicial.getValueAt(i, j);
-                        if (i >= j) {
-                            tblTablaResultado.setValueAt(aux, i, j);
-                        }
-                    }
-                }
+                Helper.triangularInferior(tblTablaInicial, tblTablaResultado);
                 break;
             case 3:
-                for (int i = 0; i < nf; i++) {
-                    for (int j = 0; j < nc; j++) {
-                        aux = (int) tblTablaInicial.getValueAt(i, j);
-
-                        tblTablaResultado.setValueAt(aux, j, i);
-
-                    }
-                }
+                Helper.transpuesta(tblTablaInicial, tblTablaResultado);
                 break;
 
         }

@@ -65,4 +65,60 @@ public class Helper {
 
         }
     }
+
+    public static void diagonalSecundaria(JTable tabla1, JTable tabla2) {
+        int nf, nc, aux;
+        nc = tabla1.getColumnCount();
+        nf = tabla1.getRowCount();
+        for (int i = 0; i < nf; i++) {
+            for (int j = 0; j < nc; j++) {
+                aux = (int) tabla1.getValueAt(i, j);
+                if (nf - 1 - i == j) {
+                    tabla2.setValueAt(aux, i, j);
+                }
+            }
+        }
+    }
+
+    public static void triangularSuperior(JTable tabla1, JTable tabla2) {
+        int nf, nc, aux;
+        nc = tabla1.getColumnCount();
+        nf = tabla1.getRowCount();
+        for (int i = 0; i < nf; i++) {
+            for (int j = 0; j < nc; j++) {
+                aux = (int) tabla1.getValueAt(i, j);
+                if (i <= j) {
+                    tabla2.setValueAt(aux, i, j);
+                }
+            }
+        }
+    }
+
+    public static void triangularInferior(JTable tabla1, JTable tabla2) {
+        int nf, nc, aux;
+        nc = tabla1.getColumnCount();
+        nf = tabla1.getRowCount();
+        for (int i = 0; i < nf; i++) {
+            for (int j = 0; j < nc; j++) {
+                aux = (int) tabla1.getValueAt(i, j);
+                if (i >= j) {
+                    tabla2.setValueAt(aux, i, j);
+                }
+            }
+        }
+    }
+
+    public static void transpuesta(JTable tabla1, JTable tabla2) {
+        int nf, nc, aux;
+        nc = tabla1.getColumnCount();
+        nf = tabla1.getRowCount();
+        for (int i = 0; i < nf; i++) {
+            for (int j = 0; j < nc; j++) {
+                aux = (int) tabla1.getValueAt(i, j);
+
+                tabla2.setValueAt(aux, j, i);
+
+            }
+        }
+    }
 }
