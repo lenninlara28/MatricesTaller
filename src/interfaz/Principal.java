@@ -70,11 +70,23 @@ public class Principal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel2.setText("N° Filas :");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        txtNumeroDeFilas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroDeFilasKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNumeroDeFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 30, -1));
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel3.setText("N°Columnas :");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        txtNumeroDeColumnas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNumeroDeColumnasKeyTyped(evt);
+            }
+        });
         jPanel2.add(txtNumeroDeColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 30, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 330, 70));
@@ -185,24 +197,32 @@ public class Principal extends javax.swing.JFrame {
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
         int nf, nc;
         DefaultTableModel tm, tm2;
+        if (txtNumeroDeFilas.getText().trim().isEmpty()) {
+            Helper.mensaje(this, "Digite El Numero De Filas ", 2);
+            txtNumeroDeFilas.requestFocusInWindow();
+        } else if (txtNumeroDeColumnas.getText().trim().isEmpty()) {
+            Helper.mensaje(this, "Digite El Numero De Columnas ", 2);
+            txtNumeroDeColumnas.requestFocusInWindow();
+        } else {
 
-        nf = Integer.parseInt(txtNumeroDeFilas.getText());
-        nc = Integer.parseInt(txtNumeroDeColumnas.getText());
+            nf = Integer.parseInt(txtNumeroDeFilas.getText());
+            nc = Integer.parseInt(txtNumeroDeColumnas.getText());
 
-        tm = (DefaultTableModel) tblTablaInicial.getModel();
-        tm2 = (DefaultTableModel) tblTablaResultado.getModel();
+            tm = (DefaultTableModel) tblTablaInicial.getModel();
+            tm2 = (DefaultTableModel) tblTablaResultado.getModel();
 
-        tm.setRowCount(nf);
-        tm.setColumnCount(nc);
+            tm.setRowCount(nf);
+            tm.setColumnCount(nc);
 
-        tm2.setRowCount(nf);
-        tm2.setColumnCount(nc);
+            tm2.setRowCount(nf);
+            tm2.setColumnCount(nc);
 
-        JButton botonesH[] = {cmdManual, cmdAutomatico};
-        JButton botonesD[] = {cmdCrear};
+            JButton botonesH[] = {cmdManual, cmdAutomatico};
+            JButton botonesD[] = {cmdCrear};
 
-        Helper.habilitarBotones(botonesH);
-        Helper.deshabilitarBotones(botonesD);
+            Helper.habilitarBotones(botonesH);
+            Helper.deshabilitarBotones(botonesD);
+        }
 
     }//GEN-LAST:event_cmdCrearActionPerformed
 
@@ -221,7 +241,7 @@ public class Principal extends javax.swing.JFrame {
                         n = Integer.parseInt(JOptionPane.showInputDialog(this, "Digite el elemento en la posicion[" + i + "] " + " [" + j + "]").trim());
                         tblTablaInicial.setValueAt(n, i, j);
                     } catch (NumberFormatException e) {
-                        Helper.mensaje(this, "Digite un numero valido", 3);
+                        Helper.mensaje(this, "Digite un numero valido", 2);
                         sw = 0;
                     } catch (NullPointerException e) {
                         res = JOptionPane.showConfirmDialog(this, "¿seguro que deseas salir?", "Salor", JOptionPane.YES_NO_OPTION);
@@ -347,6 +367,26 @@ public class Principal extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_cmdOperacionesActionPerformed
+
+    private void txtNumeroDeFilasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDeFilasKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtNumeroDeFilasKeyTyped
+
+    private void txtNumeroDeColumnasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumeroDeColumnasKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtNumeroDeColumnasKeyTyped
 
     /**
      * @param args the command line arguments

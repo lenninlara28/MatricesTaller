@@ -20,13 +20,13 @@ public class Helper {
     public static void mensaje(Component ventana, String mensaje, int tipo) {
         switch (tipo) {
             case 1:
-                JOptionPane.showMessageDialog(ventana, mensaje, "Informacion", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(ventana, mensaje, "Informacion", JOptionPane.INFORMATION_MESSAGE);
                 break;
             case 2:
                 JOptionPane.showMessageDialog(ventana, mensaje, "Advertencia", JOptionPane.WARNING_MESSAGE);
                 break;
             case 3:
-                JOptionPane.showMessageDialog(ventana, mensaje, "Error", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(ventana, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
                 break;
         }
     }
