@@ -208,20 +208,34 @@ public class Principal extends javax.swing.JFrame {
             nf = Integer.parseInt(txtNumeroDeFilas.getText());
             nc = Integer.parseInt(txtNumeroDeColumnas.getText());
 
-            tm = (DefaultTableModel) tblTablaInicial.getModel();
-            tm2 = (DefaultTableModel) tblTablaResultado.getModel();
+            if (nf == 0) {
+                Helper.mensaje(this, "Numero De Filas No Puede Ser Cero", 3);
+                txtNumeroDeFilas.requestFocusInWindow();
+            } else if (nc == 0) {
+                Helper.mensaje(this, "Numero De Columnas No Puede Ser Cero", 3);
+                txtNumeroDeColumnas.requestFocusInWindow();
+            } else if (nc != nf) {
+                Helper.mensaje(this, "Para Poder Hacer  Bien Las Operaciones, La Matriz Debe Ser De Igual Longitud", 1);
+            } else if (nc > 13) {
+                Helper.mensaje(this, "El Numero De Columnas No Puede Ser Mayor A 13", 2);
+                txtNumeroDeColumnas.requestFocusInWindow();
+            } else {
 
-            tm.setRowCount(nf);
-            tm.setColumnCount(nc);
+                tm = (DefaultTableModel) tblTablaInicial.getModel();
+                tm2 = (DefaultTableModel) tblTablaResultado.getModel();
 
-            tm2.setRowCount(nf);
-            tm2.setColumnCount(nc);
+                tm.setRowCount(nf);
+                tm.setColumnCount(nc);
 
-            JButton botonesH[] = {cmdManual, cmdAutomatico};
-            JButton botonesD[] = {cmdCrear};
+                tm2.setRowCount(nf);
+                tm2.setColumnCount(nc);
 
-            Helper.habilitarBotones(botonesH);
-            Helper.deshabilitarBotones(botonesD);
+                JButton botonesH[] = {cmdManual, cmdAutomatico};
+                JButton botonesD[] = {cmdCrear};
+
+                Helper.habilitarBotones(botonesH);
+                Helper.deshabilitarBotones(botonesD);
+            }
         }
 
     }//GEN-LAST:event_cmdCrearActionPerformed
@@ -244,13 +258,11 @@ public class Principal extends javax.swing.JFrame {
                         Helper.mensaje(this, "Digite un numero valido", 2);
                         sw = 0;
                     } catch (NullPointerException e) {
-                        res = JOptionPane.showConfirmDialog(this, "¿seguro que deseas salir?", "Salor", JOptionPane.YES_NO_OPTION);
+                        res = JOptionPane.showConfirmDialog(this, "¿seguro que deseas salir?", "Salir", JOptionPane.YES_NO_OPTION);
                         if (res == 0) {
                             sw = 1;
                             i = nf;
                             j = nc;
-                            Helper.porDefectoTabla(tblTablaInicial);
-                            Helper.porDefectoTabla(tblTablaResultado);
                             aux = false;
                             JButton botonesH[] = {cmdCrear, cmdLimpiar};
                             Helper.habilitarBotones(botonesH);
@@ -314,57 +326,99 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmdOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOperacionesActionPerformed
         int op = cmbOperacion.getSelectedIndex();
-
+        int nf, nc, sw, res;
+        nf = Integer.parseInt(txtNumeroDeFilas.getText());
+        nc = Integer.parseInt(txtNumeroDeColumnas.getText());
         Helper.limpiadoTabla(tblTablaResultado);
+        if (nf < 5 || nf > 13) {
+            Helper.mensaje(this, "Para Que Todas Las Operaciones Se Den \n"
+                    + "El Numero De Filas Y Columnas Debe Ser Igual O Mayor a 5 Y Menor O Igual A 13", 2);
+        } else {
+            switch (op) {
 
-        switch (op) {
+                case 0:
+                    Helper.diagonalSecundaria(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 1:
+                    Helper.triangularSuperior(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 2:
+                    Helper.triangularInferior(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 3:
+                    Helper.transpuesta(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 4:
+                    Helper.letraA(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 5:
+                    Helper.letraZ(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 6:
+                    if (nf % 2 == 0) {
+                        Helper.mensaje(this, "Para Ver Mejor La Letra ''T'' El Numero De Columnas Debe Ser Impar", 1);
+                        res = JOptionPane.showConfirmDialog(this, "¿Desea Ver La Letra ''T'' De Todas Formas?", "Preferencia", JOptionPane.YES_NO_OPTION);
+                        if (res == 0) {
+                            Helper.letraT(tblTablaInicial, tblTablaResultado);
+                        } else {
+                        }
+                    } else {
+                        Helper.letraT(tblTablaInicial, tblTablaResultado);
+                    }
+                    break;
+                case 7:
+                    Helper.letraV(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 8:
+                    if (nf % 2 == 0) {
+                        Helper.mensaje(this, "Para Ver Mejor La Letra ''E'' El Numero De Columnas Debe Ser Impar", 1);
+                        res = JOptionPane.showConfirmDialog(this, "¿Desea Ver La Letra ''E'' De Todas Formas?", "Preferencia", JOptionPane.YES_NO_OPTION);
+                        if (res == 0) {
+                            Helper.letraE(tblTablaInicial, tblTablaResultado);
+                        } else {
+                        }
+                    } else {
+                        Helper.letraE(tblTablaInicial, tblTablaResultado);
+                    }
+                    break;
+                case 9:
+                    Helper.letraF(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 10:
+                    Helper.letraP(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 11:
+                    if (nf % 2 == 0) {
+                        Helper.mensaje(this, "Para Ver Mejor La Letra ''I'' El Numero De Columnas Debe Ser Impar", 1);
+                        res = JOptionPane.showConfirmDialog(this, "¿Desea Ver La Letra ''I'' De Todas Formas?", "Preferencia", JOptionPane.YES_NO_OPTION);
+                        if (res == 0) {
+                            Helper.letraI(tblTablaInicial, tblTablaResultado);
+                        } else {
+                        }
+                    } else {
+                        Helper.letraI(tblTablaInicial, tblTablaResultado);
+                    }
+                    break;
+                case 12:
+                    Helper.letraN(tblTablaInicial, tblTablaResultado);
+                    break;
+                case 13:
+                    if (nf % 2 == 0) {
+                        Helper.mensaje(this, "Para Ver Mejor La Letra ''Y'' El Numero De Columnas Debe Ser Impar", 1);
+                        res = JOptionPane.showConfirmDialog(this, "¿Desea Ver La Letra ''Y'' De Todas Formas?", "Preferencia", JOptionPane.YES_NO_OPTION);
+                        if (res == 0) {
+                            Helper.letraY(tblTablaInicial, tblTablaResultado);
+                        } else {
+                        }
+                    } else {
+                        Helper.letraY(tblTablaInicial, tblTablaResultado);
+                    }
+                    break;
+                case 14:
+                    Helper.letraX(tblTablaInicial, tblTablaResultado);
+                    break;
 
-            case 0:
-                Helper.diagonalSecundaria(tblTablaInicial, tblTablaResultado);
-                break;
-            case 1:
-                Helper.triangularSuperior(tblTablaInicial, tblTablaResultado);
-                break;
-            case 2:
-                Helper.triangularInferior(tblTablaInicial, tblTablaResultado);
-                break;
-            case 3:
-                Helper.transpuesta(tblTablaInicial, tblTablaResultado);
-                break;
-            case 4:
-                Helper.letraA(tblTablaInicial, tblTablaResultado);
-                break;
-            case 5:
-                Helper.letraZ(tblTablaInicial, tblTablaResultado);
-                break;
-            case 6:
-                Helper.letraT(tblTablaInicial, tblTablaResultado);
-                break;
-            case 7:
-                Helper.letraV(tblTablaInicial, tblTablaResultado);
-                break;
-            case 8:
-                Helper.letraE(tblTablaInicial, tblTablaResultado);
-                break;
-            case 9:
-                Helper.letraF(tblTablaInicial, tblTablaResultado);
-                break;
-            case 10:
-                Helper.letraP(tblTablaInicial, tblTablaResultado);
-                break;
-            case 11:
-                Helper.letraI(tblTablaInicial, tblTablaResultado);
-                break;
-            case 12:
-                Helper.letraN(tblTablaInicial, tblTablaResultado);
-                break;
-            case 13:
-                Helper.letraY(tblTablaInicial, tblTablaResultado);
-                break;
-            case 14:
-                Helper.letraX(tblTablaInicial, tblTablaResultado);
-                break;
-
+            }
         }
     }//GEN-LAST:event_cmdOperacionesActionPerformed
 
