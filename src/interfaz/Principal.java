@@ -294,7 +294,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void cmdOperacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOperacionesActionPerformed
         int op = cmbOperacion.getSelectedIndex();
-        
+
         Helper.limpiadoTabla(tblTablaResultado);
 
         switch (op) {
@@ -310,6 +310,39 @@ public class Principal extends javax.swing.JFrame {
                 break;
             case 3:
                 Helper.transpuesta(tblTablaInicial, tblTablaResultado);
+                break;
+            case 4:
+                Helper.letraA(tblTablaInicial, tblTablaResultado);
+                break;
+            case 5:
+                Helper.letraZ(tblTablaInicial, tblTablaResultado);
+                break;
+            case 6:
+                Helper.letraT(tblTablaInicial, tblTablaResultado);
+                break;
+            case 7:
+                Helper.letraV(tblTablaInicial, tblTablaResultado);
+                break;
+            case 8:
+                Helper.letraE(tblTablaInicial, tblTablaResultado);
+                break;
+            case 9:
+                Helper.letraF(tblTablaInicial, tblTablaResultado);
+                break;
+            case 10:
+                Helper.letraP(tblTablaInicial, tblTablaResultado);
+                break;
+            case 11:
+                Helper.letraI(tblTablaInicial, tblTablaResultado);
+                break;
+            case 12:
+                Helper.letraN(tblTablaInicial, tblTablaResultado);
+                break;
+            case 13:
+                Helper.letraY(tblTablaInicial, tblTablaResultado);
+                break;
+            case 14:
+                Helper.letraX(tblTablaInicial, tblTablaResultado);
                 break;
 
         }
